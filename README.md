@@ -35,7 +35,7 @@ This is framed as a **compound classification problem**:
 ## 📊 System Architecture & Methodology
 
 **Research Methodology & System Architecture Workflow:**
-![Research Methodology](<Screenshot 2026-09-22 at 2.04.25 PM.jpg>)
+![Research Methodology](<methodology.jpg>)
 
 **Core Data Splitting Workflow:**
-![Data Splitting](<Screenshot 2026-09-22 at 10.15.58 PM.png>)
+![Data Splitting](<workflow.png>)
