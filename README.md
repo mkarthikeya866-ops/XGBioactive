@@ -39,4 +39,12 @@ High-quality chemical data is essential for training an accurate bioactivity cla
 
 ## 👨‍🏫 Acknowledgments
 * **Mentor:** Dr. T. Swathi
-* **Category:** Drug Discovery(ML)
+* **Category:** Drug Discovery / Machine Learning
+
+## 📊 System Architecture & Methodology
+
+**Research Methodology & System Architecture Workflow:**
+![Research Methodology](<methodology.jpg>)
+
+**Core Data Splitting Workflow:**
+![Data Splitting](<workflow.png>)
