@@ -19,12 +19,20 @@ This is framed as a **compound classification problem**:
 * **Machine Learning:** scikit-learn, XGBoost
 * **Data Visualization:** Matplotlib, Seaborn
 * **Web App Deployment:** Streamlit
-* **Datasets:** ChEMBL / DUD-E / COX2
+
+## 🗄️ Datasets Used
+High-quality chemical data is essential for training an accurate bioactivity classifier. This project utilizes established cheminformatics databases to source molecular structures and their biological activity labels:
+
+* **[ChEMBL](https://www.ebi.ac.uk/chembl/):** A manually curated database of bioactive molecules with drug-like properties. We use ChEMBL to extract chemical structures (SMILES strings) and their experimental binding affinities (such as IC50 values) to determine baseline active/inactive thresholds.
+* **[DUD-E](http://dude.docking.org/) (Directory of Useful Decoys, Enhanced):** A crucial dataset for training machine learning models in drug discovery. It provides known active molecules for specific targets alongside computationally generated "decoys" (molecules that share physical properties with actives but are topologically distinct and assumed inactive). This prevents the XGBoost model from learning artificial biases.
+* **COX-2 Dataset:** Cyclooxygenase-2 (COX-2) is an enzyme responsible for inflammation and pain, and a common target for non-steroidal anti-inflammatory drugs (NSAIDs). This dataset serves as our primary biological target case study, allowing us to train and test the model on a highly relevant, real-world pharmacological target.
+
+> **Note on Data:** Due to GitHub's file size limits, the raw dataset files (`*.csv`, `*.sdf`) are not included in this repository. You can download them directly from the links above or run the data-fetching scripts provided in the codebase.
 
 ## 📊 Methodology
-1. **Data Acquisition:** Sourcing chemical compound data and their corresponding bioactivity values from ChEMBL, DUD-E, or COX2 datasets.
-2. **Data Preprocessing & Feature Engineering:** Cleaning the dataset and utilizing **RDKit** to convert chemical structures (like SMILES strings) into numerical molecular descriptors and fingerprints.
-3. **Exploratory Data Analysis (EDA):** Visualizing feature distributions, chemical space, and activity thresholds using **Matplotlib** and **Seaborn**.
+1. **Data Acquisition:** Sourcing chemical compound data and their corresponding bioactivity values.
+2. **Data Preprocessing & Feature Engineering:** Cleaning the dataset and utilizing **RDKit** to convert chemical structures into numerical molecular descriptors and fingerprints.
+3. **Exploratory Data Analysis (EDA):** Visualizing feature distributions, chemical space, and activity thresholds.
 4. **Model Training:** Training an **XGBoost** classifier to map the relationship between molecular fingerprints and bioactivity classes.
 5. **Evaluation:** Assessing model performance using accuracy, precision, recall, and ROC-AUC scores.
 6. **Deployment:** Building an interactive **Streamlit** web application where users can input chemical structures and receive real-time bioactivity predictions.
@@ -32,6 +40,7 @@ This is framed as a **compound classification problem**:
 ## 👨‍🏫 Acknowledgments
 * **Mentor:** Dr. T. Swathi
 * **Category:** Drug Discovery / Machine Learning
+
 ## 📊 System Architecture & Methodology
 
 **Research Methodology & System Architecture Workflow:**
