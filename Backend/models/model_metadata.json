@@ -1,0 +1,93 @@
+{
+  "dataset": "CHEMBL230_Preprocessed_Data.csv",
+  "rows": 6839,
+  "unique_molecules": 5030,
+  "class_counts": {
+    "active": 5004,
+    "inactive": 1835
+  },
+  "feature_names": [
+    "molecular_weight",
+    "rotatable_bonds",
+    "h_bond_acceptors",
+    "h_bond_donors",
+    "tpsa",
+    "logp"
+  ],
+  "target_mapping": {
+    "active": 0,
+    "inactive": 1
+  },
+  "split": "StratifiedGroupKFold first fold, grouped by molecule_chembl_id",
+  "random_state": 42,
+  "model_parameters": {
+    "objective": "binary:logistic",
+    "base_score": null,
+    "booster": null,
+    "callbacks": null,
+    "colsample_bylevel": null,
+    "colsample_bynode": null,
+    "colsample_bytree": 0.8,
+    "device": null,
+    "early_stopping_rounds": null,
+    "enable_categorical": true,
+    "eval_metric": "aucpr",
+    "feature_types": null,
+    "feature_weights": null,
+    "gamma": null,
+    "grow_policy": null,
+    "importance_type": null,
+    "interaction_constraints": null,
+    "learning_rate": 0.1,
+    "max_bin": null,
+    "max_cat_threshold": null,
+    "max_cat_to_onehot": null,
+    "max_delta_step": null,
+    "max_depth": 5,
+    "max_leaves": null,
+    "min_child_weight": null,
+    "missing": NaN,
+    "monotone_constraints": null,
+    "multi_strategy": null,
+    "n_estimators": 200,
+    "n_jobs": 4,
+    "num_parallel_tree": null,
+    "random_state": 42,
+    "reg_alpha": null,
+    "reg_lambda": null,
+    "sampling_method": null,
+    "scale_pos_weight": 2.726158038147139,
+    "subsample": 0.8,
+    "tree_method": null,
+    "validate_parameters": null,
+    "verbosity": null
+  },
+  "metrics": {
+    "accuracy": 0.747991234477721,
+    "precision_active": 0.8505869797225186,
+    "recall_active": 0.7954091816367266,
+    "f1_active": 0.8220732336255802,
+    "precision_inactive": 0.5254629629629629,
+    "recall_inactive": 0.6185286103542235,
+    "f1_inactive": 0.5682102628285357,
+    "roc_auc": 0.7942249016952471,
+    "average_precision": 0.5830218190782321,
+    "confusion_matrix": [
+      [
+        797,
+        205
+      ],
+      [
+        140,
+        227
+      ]
+    ]
+  },
+  "plots": [
+    "roc_auc_curve.png",
+    "precision_recall_curve.png",
+    "confusion_matrix_heatmap.png",
+    "feature_importance.png",
+    "class_distribution.png"
+  ]
+}
