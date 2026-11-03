@@ -1,0 +1,94 @@
+{
+  "project_name": "Bioactive Molecule Prediction Using Extreme Gradient Boosting",
+  "selected_model": "XGBoost",
+  "feature_type": "Morgan fingerprint (ECFP4-style)",
+  "fingerprint_radius": 2,
+  "fingerprint_bits": 2048,
+  "dataset_row_counts": {
+    "raw_rows": 7979,
+    "cleaned_rows": 6839,
+    "development_rows": 4830,
+    "holdout_rows": 2009
+  },
+  "development_holdout_split": {
+    "holdout_fraction_target": 0.3,
+    "holdout_fraction_actual": 0.2937563971340839,
+    "split_type": "molecule-aware (GroupShuffleSplit)",
+    "molecule_overlap": 0
+  },
+  "cross_validation": {
+    "folds": 10,
+    "type": "StratifiedGroupKFold (molecule-aware, stratified)",
+    "selection_metric": "Mean CV F1"
+  },
+  "cv_results": [
+    {
+      "Model": "XGBoost",
+      "Mean CV Accuracy": 0.8180743541581273,
+      "Mean CV Precision": 0.8314282916457746,
+      "Mean CV Recall": 0.943365808519356,
+      "Mean CV F1": 0.8834425304413027,
+      "Std CV F1": 0.01886037284745929,
+      "Mean CV ROC-AUC": 0.8483373953714892,
+      "CV Time (s)": 29.395337343215942
+    },
+    {
+      "Model": "SVM",
+      "Mean CV Accuracy": 0.8152433031767841,
+      "Mean CV Precision": 0.8284480183647045,
+      "Mean CV Recall": 0.9435221286738746,
+      "Mean CV F1": 0.8818433020544404,
+      "Std CV F1": 0.0174008752352148,
+      "Mean CV ROC-AUC": 0.8501088972322368,
+      "CV Time (s)": 9.01705288887024
+    },
+    {
+      "Model": "Random Forest",
+      "Mean CV Accuracy": 0.7947201361301084,
+      "Mean CV Precision": 0.7859295037402242,
+      "Mean CV Recall": 0.9896250405107991,
+      "Mean CV F1": 0.8757071383055447,
+      "Std CV F1": 0.02018053789349255,
+      "Mean CV ROC-AUC": 0.8439857700096063,
+      "CV Time (s)": 8.645979166030884
+    },
+    {
+      "Model": "RBF",
+      "Mean CV Accuracy": 0.7867935155937149,
+      "Mean CV Precision": 0.8108705393054583,
+      "Mean CV Recall": 0.9257811358123742,
+      "Mean CV F1": 0.8634492310397329,
+      "Std CV F1": 0.024309243781103572,
+      "Mean CV ROC-AUC": 0.8034260825012194,
+      "CV Time (s)": 9.33939790725708
+    },
+    {
+      "Model": "Naive Bayes",
+      "Mean CV Accuracy": 0.7153946180969412,
+      "Mean CV Precision": 0.8543978290431916,
+      "Mean CV Recall": 0.7350058378436171,
+      "Mean CV F1": 0.7892765732897598,
+      "Std CV F1": 0.039538632356547046,
+      "Mean CV ROC-AUC": 0.7783817802108577,
+      "CV Time (s)": 4.834959030151367
+    }
+  ],
+  "final_holdout_results": {
+    "accuracy": 0.8088601294176208,
+    "precision": 0.8201701093560145,
+    "recall": 0.9388038942976356,
+    "f1": 0.8754863813229572,
+    "roc_auc": 0.8402090858825622,
+    "confusion_matrix": [
+      [
+        275,
+        296
+      ],
+      [
+        88,
+        1350
+      ]
+    ]
+  },
+  "random_state": 42
+}

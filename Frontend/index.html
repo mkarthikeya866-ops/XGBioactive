@@ -1,202 +1,450 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="XGBioactive - AI-powered molecular bioactivity prediction for COX-2 drug discovery."
-    >
-
-    <title>XGBioactive</title>
+    <title>XGBioactive | Bioactivity Prediction</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <span class="logo-icon">🧬</span>
-            <span>XGBioactive</span>
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+        <div class="nav-container">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">✦</span>
+                <span>XGBioactive</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#prediction">Try Prediction</a>
+                <a href="#comparison">Model Comparison</a>
+                <a href="#about">About</a>
+            </nav>
+
+            <a href="#prediction" class="nav-button">
+                Get Started
+            </a>
+
         </div>
-
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#about">About</a>
-            <a href="#prediction" class="nav-button">Try Prediction</a>
-        </div>
-    </nav>
+    </header>
 
 
-    <!-- Hero -->
-    <section id="home" class="hero">
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
 
         <div class="hero-content">
 
-            <span class="badge">AI-POWERED DRUG DISCOVERY</span>
+            <div class="hero-badge">
+                <span>✦</span>
+                Molecular Bioactivity Analysis
+            </div>
 
             <h1>
-                Predict Bioactivity<br>
-                from Molecular Structure
+                Predict Bioactivity
+                <br>
+                <span>From Molecular Structure</span>
             </h1>
 
             <p>
-                Predict COX-2 bioactivity using molecular descriptors
-                and an XGBoost machine learning model.
+                Explore the potential bioactivity of chemical molecules
+                using machine learning. Predict COX-2 activity with
+                our XGBoost-powered bioactivity prediction platform.
             </p>
 
             <div class="hero-buttons">
+
                 <a href="#prediction" class="primary-button">
                     Try Prediction →
                 </a>
 
                 <a href="#how-it-works" class="secondary-button">
-                    How It Works
+                    Explore How It Works
                 </a>
+
             </div>
 
-            <div class="technology-tags">
-                <span>COX-2</span>
-                <span>XGBoost</span>
-                <span>RDKit</span>
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <h3>6</h3>
+                    <p>Molecular Descriptors</p>
+                </div>
+
+                <div class="hero-stat">
+                    <h3>5</h3>
+                    <p>ML Algorithms</p>
+                </div>
+
+                <div class="hero-stat">
+                    <h3>COX-2</h3>
+                    <p>Target Protein</p>
+                </div>
+
             </div>
 
         </div>
 
-        <div class="molecule-card">
+        <div class="hero-visual">
 
-            <div class="molecule-circle">
-                <span>⚗</span>
+            <div class="molecule-card">
+
+                <div class="molecule-card-header">
+                    <span>Molecular Preview</span>
+                    <span class="molecule-status">● Sample</span>
+                </div>
+
+                <div class="molecule-illustration">
+                    <svg viewBox="0 0 400 300"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <g stroke="#B49A8A"
+                           stroke-width="4"
+                           stroke-linecap="round">
+
+                            <line x1="200" y1="70" x2="260" y2="105"/>
+                            <line x1="260" y1="105" x2="260" y2="175"/>
+                            <line x1="260" y1="175" x2="200" y2="210"/>
+                            <line x1="200" y1="210" x2="140" y2="175"/>
+                            <line x1="140" y1="175" x2="140" y2="105"/>
+                            <line x1="140" y1="105" x2="200" y2="70"/>
+
+                            <line x1="200" y1="70" x2="200" y2="20"/>
+                            <line x1="260" y1="105" x2="320" y2="70"/>
+                            <line x1="260" y1="175" x2="320" y2="210"/>
+                            <line x1="140" y1="175" x2="80" y2="210"/>
+                            <line x1="140" y1="105" x2="80" y2="70"/>
+
+                        </g>
+
+                        <g fill="#D8B8A8"
+                           stroke="#B49A8A"
+                           stroke-width="2">
+
+                            <circle cx="200" cy="70" r="15"/>
+                            <circle cx="260" cy="105" r="15"/>
+                            <circle cx="260" cy="175" r="15"/>
+                            <circle cx="200" cy="210" r="15"/>
+                            <circle cx="140" cy="175" r="15"/>
+                            <circle cx="140" cy="105" r="15"/>
+
+                            <circle cx="200" cy="20" r="13"/>
+                            <circle cx="320" cy="70" r="13"/>
+                            <circle cx="320" cy="210" r="13"/>
+                            <circle cx="80" cy="210" r="13"/>
+                            <circle cx="80" cy="70" r="13"/>
+
+                        </g>
+
+                        <g fill="#8E7667"
+                           font-size="13"
+                           font-weight="bold">
+
+                            <text x="190" y="24">N</text>
+                            <text x="315" y="74">O</text>
+                            <text x="315" y="214">O</text>
+                            <text x="75" y="214">N</text>
+                            <text x="75" y="74">O</text>
+
+                        </g>
+
+                    </svg>
+                </div>
+
+                <div class="molecule-card-footer">
+                    <div>
+                        <span class="small-label">Target</span>
+                        <strong>COX-2</strong>
+                    </div>
+
+                    <div>
+                        <span class="small-label">Model</span>
+                        <strong>XGBoost</strong>
+                    </div>
+
+                    <div>
+                        <span class="small-label">Technology</span>
+                        <strong>RDKit</strong>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="molecule-dot dot-one"></div>
-            <div class="molecule-dot dot-two"></div>
-            <div class="molecule-dot dot-three"></div>
-            <div class="molecule-dot dot-four"></div>
 
         </div>
 
     </section>
 
 
-    <!-- Prediction -->
-    <section id="prediction" class="prediction-section">
+    <!-- ================= MOLECULAR INPUT ================= -->
+
+    <section class="section prediction-section" id="prediction">
 
         <div class="section-heading">
-            <span class="section-label">MOLECULE PREDICTION</span>
 
-            <h2>Analyze a Molecule</h2>
+            <div class="section-badge">
+                Molecular Analysis
+            </div>
+
+            <h2>
+                Predict Molecular
+                <span>Bioactivity</span>
+            </h2>
 
             <p>
-                Enter a molecular structure using its SMILES representation.
+                Enter a molecule's SMILES representation to analyze
+                its potential COX-2 bioactivity.
             </p>
-        </div>
-
-        <div class="prediction-card">
-
-            <label for="smilesInput">SMILES Input</label>
-
-            <textarea
-                id="smilesInput"
-                placeholder="Example: CCOC(=O)c1ccccc1"
-                rows="4"
-            ></textarea>
-
-            <div class="example-text">
-                Example:
-                <button id="exampleButton">
-                    CCOC(=O)c1ccccc1
-                </button>
-            </div>
-
-            <div class="button-row">
-
-                <button id="predictButton" class="primary-button">
-                    Predict Bioactivity
-                </button>
-
-                <button id="clearButton" class="clear-button">
-                    Clear
-                </button>
-
-            </div>
-
-            <p id="errorMessage" class="error-message"></p>
 
         </div>
 
+        <div class="prediction-layout">
 
-        <!-- Result -->
-        <div id="resultSection" class="result-card hidden">
+            <!-- INPUT CARD -->
+
+            <div class="input-card">
+
+                <div class="card-heading">
+                    <div>
+                        <span class="card-number">01</span>
+                        <h3>Molecular Input</h3>
+                    </div>
+
+                    <span class="input-tag">SMILES</span>
+                </div>
+
+                <label for="smiles-input">
+                    Enter SMILES Representation
+                </label>
+
+                <textarea
+                    id="smiles-input"
+                    placeholder="Example: CC(=O)Oc1ccccc1C(=O)O"
+                    rows="5"
+                ></textarea>
+
+                <div class="input-helper">
+                    <span>✦</span>
+                    SMILES describes the molecular structure in text format.
+                </div>
+
+                <div class="input-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="example-btn"
+                    >
+                        Load Example
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="clear-btn"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-button predict-button"
+                    id="predict-btn"
+                >
+                    <span>Predict Bioactivity</span>
+                    <span>→</span>
+                </button>
+
+                <div id="prediction-message" class="prediction-message"></div>
+
+            </div>
+
+
+            <!-- MOLECULAR STRUCTURE CARD -->
+
+            <div class="structure-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <span class="card-number">02</span>
+                        <h3>2D Molecular Structure</h3>
+                    </div>
+
+                    <span class="structure-tag">RDKit</span>
+
+                </div>
+
+                <div class="structure-display" id="structure-display">
+
+                    <div class="structure-placeholder">
+
+                        <div class="structure-placeholder-icon">⌬</div>
+
+                        <h4>Molecular Visualization</h4>
+
+                        <p>
+                            Your molecule's 2D structure will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="structure-footer">
+
+                    <span>● Molecular Structure</span>
+
+                    <span id="structure-status">
+                        Waiting for input
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PREDICTION RESULT ================= -->
+
+        <div class="result-section" id="result-section">
 
             <div class="result-header">
 
                 <div>
-                    <span class="section-label">BIOACTIVITY ANALYSIS</span>
-                    <h2 id="predictionResult">--</h2>
+                    <span class="card-number">03</span>
+                    <h3>Prediction Results</h3>
                 </div>
 
-                <div class="confidence">
-                    <span>Confidence</span>
-                    <strong id="confidenceValue">--</strong>
+                <span class="result-tag">XGBoost Model</span>
+
+            </div>
+
+            <div class="result-grid">
+
+                <!-- CLASSIFICATION -->
+
+                <div class="result-card classification-card">
+
+                    <span class="result-card-label">
+                        Bioactivity Classification
+                    </span>
+
+                    <div class="classification-value" id="prediction-value">
+                        --
+                    </div>
+
+                    <p id="classification-description">
+                        Submit a molecule to view its classification.
+                    </p>
+
+                </div>
+
+
+                <!-- CONFIDENCE -->
+
+                <div class="result-card confidence-card">
+
+                    <span class="result-card-label">
+                        Prediction Confidence
+                    </span>
+
+                    <div class="confidence-value">
+                        <span id="confidence-value">--</span>
+                        <span>%</span>
+                    </div>
+
+                    <div class="confidence-bar">
+
+                        <div
+                            class="confidence-fill"
+                            id="confidence-fill"
+                        ></div>
+
+                    </div>
+
+                    <p>Model prediction probability</p>
+
                 </div>
 
             </div>
 
 
-            <div class="descriptor-grid">
+            <!-- DESCRIPTORS -->
 
-                <div class="descriptor">
-                    <span>Molecular Weight</span>
-                    <strong id="molecularWeight">--</strong>
+            <div class="descriptors-card">
+
+                <div class="descriptor-heading">
+
+                    <div>
+                        <h3>Molecular Descriptors</h3>
+                        <p>Calculated chemical properties of the molecule.</p>
+                    </div>
+
+                    <span class="descriptor-tag">
+                        6 Features
+                    </span>
+
                 </div>
 
-                <div class="descriptor">
-                    <span>LogP</span>
-                    <strong id="logP">--</strong>
+                <div class="descriptor-grid">
+
+                    <div class="descriptor-item">
+                        <span class="descriptor-icon">⚖</span>
+                        <p>Molecular Weight</p>
+                        <h4 id="mw-value">--</h4>
+                        <span>g/mol</span>
+                    </div>
+
+                    <div class="descriptor-item">
+                        <span class="descriptor-icon">◈</span>
+                        <p>LogP</p>
+                        <h4 id="logp-value">--</h4>
+                        <span>Lipophilicity</span>
+                    </div>
+
+                    <div class="descriptor-item">
+                        <span class="descriptor-icon">◇</span>
+                        <p>TPSA</p>
+                        <h4 id="tpsa-value">--</h4>
+                        <span>Å²</span>
+                    </div>
+
+                    <div class="descriptor-item">
+                        <span class="descriptor-icon">H</span>
+                        <p>H-Bond Donors</p>
+                        <h4 id="hbd-value">--</h4>
+                        <span>Count</span>
+                    </div>
+
+                    <div class="descriptor-item">
+                        <span class="descriptor-icon">N</span>
+                        <p>H-Bond Acceptors</p>
+                        <h4 id="hba-value">--</h4>
+                        <span>Count</span>
+                    </div>
+
+                    <div class="descriptor-item">
+                        <span class="descriptor-icon">↻</span>
+                        <p>Rotatable Bonds</p>
+                        <h4 id="rotatable-value">--</h4>
+                        <span>Count</span>
+                    </div>
+
                 </div>
-
-                <div class="descriptor">
-                    <span>TPSA</span>
-                    <strong id="tpsa">--</strong>
-                </div>
-
-                <div class="descriptor">
-                    <span>H-Bond Donors</span>
-                    <strong id="hbd">--</strong>
-                </div>
-
-                <div class="descriptor">
-                    <span>H-Bond Acceptors</span>
-                    <strong id="hba">--</strong>
-                </div>
-
-                <div class="descriptor">
-                    <span>Rotatable Bonds</span>
-                    <strong id="rotatableBonds">--</strong>
-                </div>
-
-            </div>
-
-
-            <div class="smiles-result">
-
-                <span>SMILES</span>
-
-                <code id="resultSmiles">--</code>
-
-            </div>
-
-
-            <div class="model-info">
-
-                <span>Model: <strong>XGBoost</strong></span>
-
-                <span>Target: <strong>COX-2</strong></span>
 
             </div>
 
@@ -205,43 +453,263 @@
     </section>
 
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="info-section">
+    <!-- ================= MODEL COMPARISON ================= -->
 
-        <span class="section-label">HOW IT WORKS</span>
+    <section class="section comparison-section" id="comparison">
 
-        <h2>From Molecule to Prediction</h2>
+        <div class="section-heading">
 
-        <div class="steps">
-
-            <div class="step">
-                <span>01</span>
-                <h3>Enter SMILES</h3>
-                <p>Provide the molecular structure as a SMILES string.</p>
+            <div class="section-badge">
+                Performance Evaluation
             </div>
 
-            <div class="step">
-                <span>02</span>
-                <h3>RDKit Processing</h3>
-                <p>RDKit converts the molecular structure into descriptors.</p>
+            <h2>
+                Machine Learning
+                <span>Model Comparison</span>
+            </h2>
+
+            <p>
+                Compare the performance of five machine learning
+                algorithms using standard classification metrics.
+            </p>
+
+        </div>
+
+
+        <!-- COMPARISON TABLE -->
+
+        <div class="comparison-table-card">
+
+            <div class="table-heading">
+
+                <div>
+                    <h3>Performance Metrics</h3>
+                    <p>Evaluation of different classification algorithms.</p>
+                </div>
+
+                <span class="table-tag">
+                    5 Algorithms
+                </span>
+
             </div>
 
-            <div class="step">
-                <span>03</span>
-                <h3>XGBoost Model</h3>
-                <p>The trained model analyzes the molecular features.</p>
+            <div class="table-responsive">
+
+                <table id="model-comparison-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Accuracy</th>
+                            <th>Precision</th>
+                            <th>Recall</th>
+                            <th>F1-Score</th>
+                            <th>ROC-AUC</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr class="best-model-row" data-model="XGBoost">
+
+                            <td>
+                                <span class="algorithm-name">
+                                    <span class="algorithm-dot xgb-dot"></span>
+                                    XGBoost
+                                </span>
+                            </td>
+
+                            <td class="placeholder-metric">Loading...</td>
+                            <td class="placeholder-metric">Loading...</td>
+                            <td class="placeholder-metric">Loading...</td>
+                            <td class="placeholder-metric">Loading...</td>
+                            <td class="placeholder-metric">Loading...</td>
+                        </tr>
+
+                        <tr data-model="Random Forest">
+
+                            <td>
+                                <span class="algorithm-name">
+                                    <span class="algorithm-dot rf-dot"></span>
+                                    Random Forest
+                                </span>
+                            </td>
+
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+
+                        </tr>
+
+                        <tr data-model="Linear SVM">
+
+                            <td>
+                                <span class="algorithm-name">
+                                    <span class="algorithm-dot svm-dot"></span>
+                                    Linear SVM
+                                </span>
+                            </td>
+
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+
+                        </tr>
+
+                        <tr data-model="RBF Network">
+
+                            <td>
+                                <span class="algorithm-name">
+                                    <span class="algorithm-dot rbf-dot"></span>
+                                    RBF Network
+                                </span>
+                            </td>
+
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+
+                        </tr>
+
+                        <tr data-model="Naive Bayes">
+
+                            <td>
+                                <span class="algorithm-name">
+                                    <span class="algorithm-dot nb-dot"></span>
+                                    Naive Bayes
+                                </span>
+                            </td>
+
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+                            <td class="placeholder-metric">Pending</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
             </div>
 
-            <div class="step">
-                <span>04</span>
-                <h3>Prediction</h3>
-                <p>The molecule is classified as active or inactive.</p>
+            <div class="table-note" id="model-metrics-note" aria-live="polite">
+                <span>ⓘ</span>
+                Loading evaluation metrics for all five algorithms...
             </div>
 
-            <div class="step">
-                <span>05</span>
-                <h3>Results</h3>
-                <p>View the prediction, confidence and molecular descriptors.</p>
+        </div>
+
+
+        <!-- ================= CHARTS ================= -->
+
+        <div class="charts-heading">
+
+            <h3>Visual Performance Analysis</h3>
+
+            <p>
+                Graphical comparison of model performance across
+                multiple evaluation metrics.
+            </p>
+
+        </div>
+
+        <div class="charts-grid">
+
+            <!-- ACCURACY -->
+
+            <div class="chart-card">
+
+                <div class="chart-card-heading">
+
+                    <div>
+                        <span class="chart-number">01</span>
+                        <h4>Accuracy Comparison</h4>
+                    </div>
+
+                    <span class="chart-tag">Bar Chart</span>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="accuracy-chart"></canvas>
+                </div>
+
+            </div>
+
+
+            <!-- F1 SCORE -->
+
+            <div class="chart-card">
+
+                <div class="chart-card-heading">
+
+                    <div>
+                        <span class="chart-number">02</span>
+                        <h4>F1-Score Comparison</h4>
+                    </div>
+
+                    <span class="chart-tag">Bar Chart</span>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="f1-chart"></canvas>
+                </div>
+
+            </div>
+
+
+            <!-- ROC AUC -->
+
+            <div class="chart-card">
+
+                <div class="chart-card-heading">
+
+                    <div>
+                        <span class="chart-number">03</span>
+                        <h4>ROC-AUC Comparison</h4>
+                    </div>
+
+                    <span class="chart-tag">Bar Chart</span>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="roc-chart"></canvas>
+                </div>
+
+            </div>
+
+
+            <!-- RADAR -->
+
+            <div class="chart-card">
+
+                <div class="chart-card-heading">
+
+                    <div>
+                        <span class="chart-number">04</span>
+                        <h4>Multi-Metric Comparison</h4>
+                    </div>
+
+                    <span class="chart-tag">Radar Chart</span>
+
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="radar-chart"></canvas>
+                </div>
+
             </div>
 
         </div>
@@ -249,41 +717,202 @@
     </section>
 
 
-    <!-- About -->
-    <section id="about" class="about-section">
+    <!-- ================= HOW IT WORKS ================= -->
 
-        <span class="section-label">ABOUT XGBIOACTIVE</span>
+    <section class="section how-section" id="how-it-works">
 
-        <h2>Machine Learning for Drug Discovery</h2>
+        <div class="section-heading">
 
-        <p>
-            XGBioactive uses molecular descriptors generated with RDKit
-            and an XGBoost classifier to predict COX-2 bioactivity.
-        </p>
+            <div class="section-badge">
+                Workflow
+            </div>
 
-        <div class="about-tags">
-            <span>Python</span>
-            <span>FastAPI</span>
-            <span>RDKit</span>
-            <span>XGBoost</span>
-            <span>COX-2</span>
+            <h2>
+                How It
+                <span>Works</span>
+            </h2>
+
+            <p>
+                A simple workflow for molecular bioactivity prediction.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-grid">
+
+            <div class="workflow-card">
+
+                <div class="workflow-icon">⌬</div>
+
+                <span class="workflow-step">STEP 01</span>
+
+                <h3>Molecule Input</h3>
+
+                <p>
+                    Provide a chemical molecule in SMILES format.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-card">
+
+                <div class="workflow-icon">◇</div>
+
+                <span class="workflow-step">STEP 02</span>
+
+                <h3>Descriptor Calculation</h3>
+
+                <p>
+                    RDKit calculates six molecular descriptors
+                    from the chemical structure.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-card">
+
+                <div class="workflow-icon">✦</div>
+
+                <span class="workflow-step">STEP 03</span>
+
+                <h3>Machine Learning</h3>
+
+                <p>
+                    The XGBoost model analyzes the descriptors
+                    to predict bioactivity.
+                </p>
+
+            </div>
+
+
+            <div class="workflow-card">
+
+                <div class="workflow-icon">▤</div>
+
+                <span class="workflow-step">STEP 04</span>
+
+                <h3>Prediction Results</h3>
+
+                <p>
+                    View the classification, confidence score,
+                    and molecular properties.
+                </p>
+
+            </div>
+
         </div>
 
     </section>
 
 
-    <!-- Footer -->
-    <footer>
+    <!-- ================= ABOUT ================= -->
 
-        <div>
-            <strong>XGBioactive</strong>
-            <p>Bioactive Molecule Prediction</p>
+    <section class="section about-section" id="about">
+
+        <div class="about-content">
+
+            <div class="section-badge">
+                About the Project
+            </div>
+
+            <h2>
+                Bioactive Molecule Prediction
+                <span>Using XGBoost</span>
+            </h2>
+
+            <p>
+                XGBioactive is a machine learning-based drug discovery
+                project designed to predict the bioactivity of
+                chemical molecules against the COX-2 target protein.
+            </p>
+
+            <p>
+                The system uses molecular descriptors calculated
+                using RDKit and an Extreme Gradient Boosting model
+                to classify molecules as active or inactive.
+            </p>
+
+            <div class="about-tags">
+
+                <span>Machine Learning</span>
+                <span>XGBoost</span>
+                <span>RDKit</span>
+                <span>COX-2</span>
+                <span>Drug Discovery</span>
+
+            </div>
+
         </div>
 
-        <p>© 2026 XGBioactive</p>
+        <div class="about-visual">
+
+            <div class="about-icon">✧</div>
+
+            <h3>Computational Drug Discovery</h3>
+
+            <p>
+                Data-driven molecular analysis to support
+                bioactivity prediction.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <a href="#home" class="logo footer-logo">
+                <span class="logo-icon">✦</span>
+                <span>XGBioactive</span>
+            </a>
+
+            <p>
+                Bioactive molecule prediction using molecular descriptors
+                and a trained XGBoost model.
+            </p>
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#prediction">Prediction</a>
+                <a href="#comparison">Comparison</a>
+                <a href="#about">About</a>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 XGBioactive. Project School.
+                </span>
+
+                <span>
+                    Built with HTML, CSS, JavaScript & RDKit
+                </span>
+
+            </div>
+
+        </div>
 
     </footer>
-    <script src="script.js"></script>
+
+
+   <!-- RDKit.js for Molecular Structure Rendering -->
+<script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Main JavaScript -->
+<script src="script.js"></script>
 
 </body>
 </html>
