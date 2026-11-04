@@ -46,8 +46,8 @@
             </h2>
 
             <p>
-                Enter a molecule's SMILES representation to analyze
-                its potential COX-2 bioactivity.
+                Enter a compound name or SMILES to predict its potential
+                COX-2 bioactivity.
             </p>
 
         </div>
@@ -61,25 +61,25 @@
                 <div class="card-heading">
                     <div>
                         <span class="card-number">01</span>
-                        <h3>Molecular Input</h3>
+                        <h3>Molecule Input</h3>
                     </div>
 
-                    <span class="input-tag">SMILES</span>
+                    <span class="input-tag">NAME OR SMILES</span>
                 </div>
 
                 <label for="smiles-input">
-                    Enter SMILES Representation
+                    Enter compound name or SMILES
                 </label>
 
                 <textarea
                     id="smiles-input"
-                    placeholder="Example: CC(=O)Oc1ccccc1C(=O)O"
+                    placeholder="Example: aspirin or CC(=O)Oc1ccccc1C(=O)O"
                     rows="5"
                 ></textarea>
 
                 <div class="input-helper">
                     <span>✦</span>
-                    SMILES describes the molecular structure in text format.
+                    Compound names are resolved through PubChem; valid SMILES are processed directly.
                 </div>
 
                 <div class="input-actions">
@@ -195,6 +195,41 @@
                         Submit a molecule to view its classification.
                     </p>
 
+                    <div class="research-guidance" aria-live="polite">
+                        <h4>Research next step</h4>
+                        <p id="research-guidance-text">
+                            A model prediction is an early research signal and needs experimental validation.
+                        </p>
+                    </div>
+
+                    <div class="clinical-uses" id="clinical-uses-panel" hidden>
+                        <h4>Established clinical indications</h4>
+                        <p class="clinical-uses-note">
+                            Optional ChEMBL lookup. Clicking sends this SMILES to ChEMBL; the records may not cover every country's product labels and are not personal medical advice.
+                        </p>
+                        <button
+                            type="button"
+                            class="secondary-button clinical-uses-button"
+                            id="lookup-known-uses-btn"
+                            disabled
+                        >
+                            Look up clinical uses
+                        </button>
+                        <div id="known-uses-content" class="known-uses-content" aria-live="polite">
+                            <p>Run a prediction, then look up matching Phase-IV records.</p>
+                        </div>
+                        <a
+                            id="known-uses-source"
+                            class="known-uses-source"
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            hidden
+                        >
+                            View ChEMBL source record
+                        </a>
+                    </div>
+
                 </div>
 
 
@@ -291,7 +326,7 @@
 <script src="https://unpkg.com/@rdkit/rdkit/dist/RDKit_minimal.js"></script>
 
 <!-- Main JavaScript -->
-<script src="script.js?v=2"></script>
+<script src="script.js?v=12"></script>
 
 </body>
 </html>

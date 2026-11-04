@@ -529,6 +529,78 @@ svg {
     color: #C47D72;
 }
 
+.research-guidance {
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+    padding-top: 16px;
+}
+
+.research-guidance h4 {
+    color: var(--brown-dark);
+    font-size: 13px;
+}
+
+.research-guidance p {
+    color: var(--text-light);
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 5px;
+}
+
+.clinical-uses {
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+    padding-top: 16px;
+}
+
+.clinical-uses[hidden] {
+    display: none;
+}
+
+.clinical-uses h4 {
+    color: var(--brown-dark);
+    font-size: 13px;
+}
+
+.clinical-uses-note,
+.known-uses-content {
+    color: var(--text-light);
+    font-size: 12px;
+    line-height: 1.7;
+    margin-top: 6px;
+}
+
+.clinical-uses-button {
+    margin-top: 12px;
+    padding: 9px 14px;
+    font-size: 12px;
+}
+
+.known-uses-content ul {
+    margin: 8px 0 0 20px;
+}
+
+.known-uses-content li + li {
+    margin-top: 4px;
+}
+
+.known-uses-compound {
+    color: var(--brown-dark);
+    font-weight: 600;
+}
+
+.known-uses-source {
+    display: inline-block;
+    color: var(--brown);
+    font-size: 12px;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+.known-uses-source[hidden] {
+    display: none;
+}
+
 .result-card p {
     font-size: 12px;
     color: var(--text-light);

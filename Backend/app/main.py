@@ -760,6 +760,11 @@ def predict_final_xgb(request: PredictRequest):
             "target": "COX-2",
             "prediction": prediction_label,
             "class_id": prediction,
+            "canonical_smiles": Chem.MolToSmiles(
+                molecule,
+                canonical=True,
+                isomericSmiles=True,
+            ),
             "molecular_descriptors": calculate_molecular_descriptors(molecule),
             "fingerprint": {
                 "type": "Morgan",
