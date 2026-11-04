@@ -482,7 +482,7 @@ svg {
 }
 
 /* =========================================================
-    Result UI: classification and confidence elements populated by script.js.
+    Result UI: classification and descriptors populated by script.js.
    ========================================================= */
 
 .result-section {
@@ -496,7 +496,7 @@ svg {
 
 .result-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 25px;
 }
 
@@ -507,11 +507,6 @@ svg {
 .classification-card {
     background: var(--sage-light);
     border-color: #D8E4D3;
-}
-
-.confidence-card {
-    background: var(--lavender-light);
-    border-color: #E2DAEF;
 }
 
 .result-card-label {
@@ -538,37 +533,6 @@ svg {
     font-size: 12px;
     color: var(--text-light);
     margin-top: 8px;
-}
-
-.confidence-value {
-    display: flex;
-    align-items: baseline;
-    gap: 5px;
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: #8D7BAF;
-}
-
-.confidence-value span:last-child {
-    font-size: 22px;
-}
-
-.confidence-bar {
-    width: 100%;
-    height: 8px;
-    border-radius: 20px;
-    background: #E1D8EE;
-    margin-top: 15px;
-    overflow: hidden;
-}
-
-.confidence-fill {
-    width: 0%;
-    height: 100%;
-    background: #A797C7;
-    border-radius: 20px;
-    transition: width 0.8s ease;
 }
 
 /* =========================================================

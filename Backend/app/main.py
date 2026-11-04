@@ -29,7 +29,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from rdkit import Chem
-from rdkit.Chem import rdMolDescriptors, Descriptors, Lipinski, Crippen
+from rdkit.Chem import Descriptors, Lipinski, Crippen
 from rdkit import RDLogger
 
 RDLogger.DisableLog("rdApp.*")
@@ -236,41 +236,9 @@ def calculate_molecular_descriptors(mol):
             float(Descriptors.MolWt(mol)), 2
         ),
 
-        "Exact_Molecular_Weight": round(
-            float(Descriptors.ExactMolWt(mol)), 4
-        ),
-
         "Rotatable_Bonds": int(
             Lipinski.NumRotatableBonds(mol)
         ),
-
-        "Aromatic_Rings": int(
-            Lipinski.NumAromaticRings(mol)
-        ),
-
-        "Total_Rings": int(
-            Lipinski.RingCount(mol)
-        ),
-
-        "Heavy_Atom_Count": int(
-            Lipinski.HeavyAtomCount(mol)
-        ),
-
-        "Fraction_Csp3": round(
-            float(rdMolDescriptors.CalcFractionCSP3(mol)), 3
-        ),
-
-        "Formal_Charge": int(
-            Chem.GetFormalCharge(mol)
-        ),
-
-        "Atom_Count": int(
-            mol.GetNumAtoms()
-        ),
-
-        "Bond_Count": int(
-            mol.GetNumBonds()
-        )
 
     }
 
@@ -782,12 +750,6 @@ def predict_final_xgb(request: PredictRequest):
 
         prediction = int(model.predict(fingerprint)[0])
 
-        probabilities = model.predict_proba(fingerprint)[0]
-
-        probability_active = float(probabilities[1])
-
-        probability_inactive = float(probabilities[0])
-
         prediction_label = (
             "Active" if prediction == 1 else "Inactive"
         )
@@ -799,15 +761,6 @@ def predict_final_xgb(request: PredictRequest):
             "prediction": prediction_label,
             "class_id": prediction,
             "molecular_descriptors": calculate_molecular_descriptors(molecule),
-            "probability_active": round(
-                probability_active, 4
-            ),
-            "probability_inactive": round(
-                probability_inactive, 4
-            ),
-           "confidence": round(
-                float(max(probabilities)), 4
-),
             "fingerprint": {
                 "type": "Morgan",
                 "radius": 2,

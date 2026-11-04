@@ -15,14 +15,10 @@ const predictBtn = document.getElementById("predict-btn");
 const predictionMessage = document.getElementById("prediction-message");
 const resultSection = document.getElementById("result-section");
 
-/* Result UI: classification, description, and confidence elements. */
+/* Result UI: classification label and explanatory text. */
 const predictionValue = document.getElementById("prediction-value");
 const classificationDescription =
     document.getElementById("classification-description");
-
-
-const confidenceValue = document.getElementById("confidence-value");
-const confidenceFill = document.getElementById("confidence-fill");
 
 /* Structure preview UI: RDKit draws into this container and updates its status. */
 const structureDisplay = document.getElementById("structure-display");
@@ -131,11 +127,6 @@ function resetResults() {
     classificationDescription.textContent =
         "Submit a molecule to view its classification.";
 
-    confidenceValue.textContent = "--";
-
-    confidenceFill.style.width = "0%";
-
-
     /* Reset main descriptors */
 
     const descriptorIds = [
@@ -156,17 +147,6 @@ function resetResults() {
         }
 
     });
-
-
-    /* Reset additional descriptors */
-
-    const extraDescriptors = document.getElementById(
-        "extra-descriptors-grid"
-    );
-
-    if (extraDescriptors) {
-        extraDescriptors.innerHTML = "";
-    }
 
 
     /* Reset molecular structure */
@@ -322,7 +302,7 @@ await renderMolecule(smiles);
 });
 
 
-/* Result UI: fill classification, confidence, and descriptor values from the API response. */
+/* Result UI: fill classification and descriptor values from the API response. */
 
 function displayPrediction(data) {
 
@@ -338,19 +318,12 @@ function displayPrediction(data) {
                 : "Unknown";
 
     const prediction = predictionText.toLowerCase();
-    const confidence = Number(
-        data.confidence ?? data.probability ?? data.probability_active ?? 0
-    );
     const descriptors =
         data.molecular_descriptors && typeof data.molecular_descriptors === "object"
             ? data.molecular_descriptors
             : data.descriptors && typeof data.descriptors === "object"
                 ? data.descriptors
                 : {};
-
-    if (!Number.isFinite(confidence)) {
-        throw new Error("Invalid confidence value received from backend.");
-    }
 
     const formattedPrediction =
         prediction === "active"
@@ -372,11 +345,6 @@ function displayPrediction(data) {
                 ? "The XGBoost model predicts this molecule as Inactive against COX-2."
                 : "The XGBoost model returned an unknown prediction class.";
 
-    const confidencePercentage = Math.max(0, Math.min(confidence * 100, 100));
-
-    confidenceValue.textContent = confidencePercentage.toFixed(2) + "%";
-    confidenceFill.style.width = confidencePercentage.toFixed(2) + "%";
-
     const descriptorMap = {
         "mw-value": descriptors.molecular_weight ?? descriptors.Molecular_Weight,
         "logp-value": descriptors.logp ?? descriptors.LogP,
@@ -397,8 +365,6 @@ function displayPrediction(data) {
         }
     });
 
-    displayAdditionalDescriptors(descriptors);
-
     let modelInfoContainer = document.getElementById("xgb-probability-results");
 
     if (!modelInfoContainer) {
@@ -416,7 +382,6 @@ function displayPrediction(data) {
             <p><strong>Target:</strong> ${data.target || "COX-2"}</p>
             <p><strong>SMILES:</strong> ${data.smiles || "Not available"}</p>
             <p><strong>Predicted Class:</strong> ${formattedPrediction}</p>
-            <p><strong>Confidence:</strong> ${confidencePercentage.toFixed(2)}%</p>
         </div>
     `;
 
@@ -434,110 +399,6 @@ function displayPrediction(data) {
     }
 }
 
-
-
-/* Descriptor UI: append extra chemical properties returned by the API. */
-
-function displayAdditionalDescriptors(descriptors) {
-
-    const descriptorContainer =
-        document.querySelector(".descriptors-card");
-
-    if (!descriptorContainer) {
-        return;
-    }
-
-
-    let extraGrid =
-        document.getElementById("extra-descriptors-grid");
-
-
-    if (!extraGrid) {
-
-        extraGrid = document.createElement("div");
-
-        extraGrid.id =
-            "extra-descriptors-grid";
-
-        extraGrid.className =
-            "descriptor-grid";
-
-        extraGrid.style.marginTop =
-            "20px";
-
-        descriptorContainer.appendChild(
-            extraGrid
-        );
-
-    }
-
-
-    const additionalDescriptors = {
-
-        "Exact Molecular Weight":
-            descriptors.Exact_Molecular_Weight,
-
-        "Aromatic Rings":
-            descriptors.Aromatic_Rings,
-
-        "Total Rings":
-            descriptors.Total_Rings,
-
-        "Heavy Atom Count":
-            descriptors.Heavy_Atom_Count,
-
-        "Fraction Csp3":
-            descriptors.Fraction_Csp3,
-
-        "Formal Charge":
-            descriptors.Formal_Charge,
-
-        "Atom Count":
-            descriptors.Atom_Count,
-
-        "Bond Count":
-            descriptors.Bond_Count
-
-    };
-
-
-    extraGrid.innerHTML = "";
-
-
-    Object.entries(additionalDescriptors).forEach(
-        function([name, value]) {
-
-            const card = document.createElement("div");
-
-            card.className =
-                "descriptor-item";
-
-
-            const title = document.createElement("p");
-
-            title.textContent =
-                name;
-
-
-            const result = document.createElement("h4");
-
-            result.textContent =
-                value !== undefined && value !== null
-                    ? value
-                    : "--";
-
-
-            card.appendChild(title);
-
-            card.appendChild(result);
-
-
-            extraGrid.appendChild(card);
-
-        }
-    );
-
-}
 
 
 /* =========================================================
